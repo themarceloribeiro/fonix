@@ -1,1 +1,17 @@
 %h1 Messages
+
+.messages-container.container-fluid
+  - @messages.each do |message|
+    .message-container.row
+      .body.col-md-10
+        %strong
+          = message.author.email
+        %p= message.body
+      .timestamp.col-md-2.right-aligned
+        = message.created_at.strftime('%b %a %d, %H:%M')
+
+  .message-form-container.row
+    .col-md-12
+      = form_for Message.new, remote: true do |f|
+        = f.text_field :body
+        = f.submit "Send"

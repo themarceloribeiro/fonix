@@ -19,3 +19,23 @@
    padding: 20px;
    background-color: #ffaaaa;
  }
+
+ .message-form-container {
+    margin-top: 20px;
+ }
+
+ .message-container {
+   margin-top: 20px;
+   padding: 20px;
+   background-color: #eee;
+   border-radius: 5px;
+ }
+
+ .right-aligned {
+   text-align: right;
+}
+
+.timestamp {
+  font-size: 0.8em;
+  color: #999;
+}
