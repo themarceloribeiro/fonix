@@ -7,6 +7,7 @@ class MessagesController < ApplicationController
     @message = current_user.messages.new(message_params)
     if @message.valid?
       @message.save
+      # ActionCable.server.broadcast("chat_channel", {one: 'two'})
     else
       render json: { errors: @message.errors.full_messages.join(', ') }, status: 422
     end
