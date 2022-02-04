@@ -1,5 +1,37 @@
 import consumer from "./consumer"
 
+const render_message = function(data) {
+  console.log('Received')
+  console.log(data)
+
+  var container = $('<div></div>')
+  container.addClass('message-container')
+  container.addClass('row')
+
+  var body = $('<div></div>')
+  body.addClass('body')
+  body.addClass('col-md-10')
+
+  const strong = $('<strong></strong>')
+  strong.text(data.author)
+  body.append(strong)
+
+  const p = $('<p></p>')
+  p.text(data.message)
+  body.append(p)
+
+  const timestamp = $('<div></div>')
+  timestamp.addClass('timestamp')
+  timestamp.addClass('col-md-2')
+  timestamp.addClass('right-aligned')
+  timestamp.text(data.timestamp)
+
+  container.append(body)
+  container.append(timestamp)
+
+  container.insertBefore('.message-form-container')
+}
+
 consumer.subscriptions.create("ChatChannel", {
   connected() {
     console.log('Connected to ChatChannel')
@@ -10,20 +42,7 @@ consumer.subscriptions.create("ChatChannel", {
   },
 
   received(data) {
-    console.log('Received')
-    console.log(data)
-    var div = $('div')
-    div.addClass('message-container')
-    div.addClass('row')
-    div.append(data.message)
-    $('#messages_container').append(div)
+    render_message(data)
+    $(document).scrollTop($(document).height())
   }
 });
-
-// .message-container.row
-//   .body.col-md-10
-//     %strong
-//       = message.author.email
-//     %p= message.body
-//   .timestamp.col-md-2.right-aligned
-//     = message.created_at.strftime('%b %a %d, %H:%M')

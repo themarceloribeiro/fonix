@@ -1,0 +1,8 @@
+%h3 Hello, #{@user.email}
+
+Here is your summary for the week:
+
+%p
+  #{@last_week_count} messages have been exchanged in the last week.
+%p
+  #{@user_messages_count} since your last message on the #{@last_messaged_at.day.ordinalize} #{@last_messaged_at.strftime('of %B')}.

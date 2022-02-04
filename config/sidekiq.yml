@@ -1,0 +1,4 @@
+:schedule:
+  weekly_mailer_batch:
+    cron: '0 0 * * 1'   # Runs every monday at midnight
+    class: WeeklyMailerBatchWorker
