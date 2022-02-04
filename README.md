@@ -7,11 +7,25 @@ Simple web chat application using actioncable
 Clone the repo, then:
 
 ```
-rvm install 3.0.0
+rvm install 3.0.2
+rvm use 3.0.2
 gem install bundler
 bundle install
 yarn install
+```
+
+NOTE: Be careful not to overwrite environment.js while running the next command:
+
+```
 rails webpacker:install
+```
+
+Database setup:
+
+```
+rake db:create
+rake db:migrate
+rake db:test:prepare
 ```
 
 Start the server:
