@@ -1,24 +1,40 @@
-# README
+# Fonix Chat
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Simple web chat application using actioncable
 
-Things you may want to cover:
+## Installation
 
-* Ruby version
+Clone the repo, then:
 
-* System dependencies
+```
+rvm install 3.0.0
+gem install bundler
+bundle install
+yarn install
+rails webpacker:install
+```
 
-* Configuration
+Start the server:
 
-* Database creation
+```
+rails s
+```
 
-* Database initialization
+Once messages have been sent, you can start the sidekiq scheduler that will run once a week (every Monday 0am):
 
-* How to run the test suite
+```
+sidekiq -C config/sidekiq.yml
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Or you could also trigger the worker via rails console:
 
-* Deployment instructions
+```
+rails c
+WeeklyMailerBatchWorker.new.perform
+```
 
-* ...
+To run specs:
+
+```
+rspec spec
+```

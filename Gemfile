@@ -14,6 +14,8 @@ gem 'sidekiq-scheduler'
 
 gem 'letter_opener'
 
+gem 'timecop'
+
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 6.1.2', '>= 6.1.2.1'
 # Use mysql as the database for Active Record
