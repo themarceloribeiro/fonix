@@ -32,17 +32,19 @@ const render_message = function(data) {
   container.insertBefore('.message-form-container')
 }
 
-consumer.subscriptions.create("ChatChannel", {
-  connected() {
-    console.log('Connected to ChatChannel')
-  },
+$(function() {
+  consumer.subscriptions.create({ channel: "ChatChannel", group_id: group_id }, {
+    connected() {
+      console.log(`Connected to ChatChannel ${group_id}`)
+    },
 
-  disconnected() {
-    console.log('Disconnected from ChatChannel')
-  },
+    disconnected() {
+      console.log('Disconnected from ChatChannel')
+    },
 
-  received(data) {
-    render_message(data)
-    $(document).scrollTop($(document).height())
-  }
-});
+    received(data) {
+      render_message(data)
+      $(document).scrollTop($(document).height())
+    }
+  });
+})

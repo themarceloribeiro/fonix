@@ -12,6 +12,11 @@
 
   .message-form-container.row
     .col-md-12
-      = form_for Message.new, remote: true do |f|
+      = form_for @message, remote: true do |f|
+        = f.hidden_field :group_id
         = f.text_field :body
         = f.submit "Send"
+
+:javascript
+  window.group_id = '#{@group.try(:id)}'
+  console.log(window.group_id)

@@ -1,0 +1,14 @@
+%h3= @group.name
+
+.members-container
+  %strong Members
+  - @group.group_users.each do |group_user|
+    %p= group_user.user.email
+
+- if @uninvited.count.positive?
+  .invite-container
+    %strong Members
+    - @uninvited.each do |user|
+      %p= link_to user.email, group_group_users_path(@group.id, user_id: user.id), method: :post
+
+= link_to 'Group Chat Room', group_messages_path(@group)

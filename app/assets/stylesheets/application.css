@@ -40,3 +40,16 @@
   font-size: 0.8em;
   color: #999;
 }
+
+.members-container {
+  background-color: #ccc;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.invite-container {
+  margin-top: 20px;
+  background-color: #aaaaff;
+  padding: 10px;
+  border-radius: 5px;
+}
